@@ -23,8 +23,20 @@ public class Main{
                 System.out.println("6. Exit");
                 System.out.println("Please choose an action: ");
 
-                int choice = sc.nextInt();
-                sc.nextLine();
+            Integer choice = null;
+            while (choice == null) {
+                System.out.print("Please choose an action (1-6): ");
+                String line = sc.nextLine().trim();
+                try {
+                    choice = Integer.parseInt(line);
+                    if (choice < 1 || choice > 6) {
+                        System.out.println("Invalid option. Enter a number between 1 and 6.");
+                        choice = null;
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid option. Enter a number between 1 and 6.");
+                }
+            }
 
                 switch (choice) {
                     case 1: {
